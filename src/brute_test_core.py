@@ -2,7 +2,18 @@ from colorama import Fore, Back, Style
 import requests
 import time
 import ssl
-print(ssl.OPENSSL_VERSION)
+import validators
+from urllib.parse import urlparse
+
+
+def check_target(target):
+	url = ""
+	if validators.url(target):
+		check =  urlparse(target)		
+		url = f"https://{check.hostname}/+webvpn+/index.html"
+	else:
+		url =  f"https://{target}/+webvpn+/index.html"
+	return url	
 
 def validate_login(username, password, request):
     if "document.location.replace" in request.text:
