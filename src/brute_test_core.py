@@ -45,10 +45,11 @@ def attack(target, usernames, passwords, groups, rate):
 
 
 if __name__ == "__main__":
-    target = 'test'
     username = 'test'
     passwd = 'test'
     groups = 'test'
+    target = check_target('test')
+
     result = attack(target=target, usernames=username,
            passwords=passwd, groups=groups, rate=1)
     print(result)
